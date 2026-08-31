@@ -47,14 +47,9 @@ via `torchvision` on first run):
 python src/kan_lenet_mnist.py
 ```
 
-Uncomment/edit the `experiments = {...}` dictionary near the bottom of the
-file to add or remove configurations (pooling type, head type, kernel type,
-`epsilon`, activation, etc.). Output plots (`results.png`,
-`roc_comparison.png`, `confusion_matrix_*.png`, etc.) are saved to the
-working directory.
 
-Run the multiquadric stability study (uses `sklearn.digits`, no external
-download required):
+
+Run the multiquadric stability study :
 
 ```bash
 python src/multiquadric_stability_experiment.py
@@ -63,18 +58,4 @@ python src/multiquadric_stability_experiment.py
 This writes `multiquadric_stability_results.csv` and
 `multiquadric_stability_plot.png` to the working directory.
 
-## Notes
 
-- `multiquadric_stability_experiment.py` uses `sklearn.digits` (8x8, 10-class)
-  instead of MNIST because it was originally developed in a sandboxed
-  environment without access to the MNIST download mirrors. The
-  `FastKANLayer` class is used completely unmodified from
-  `kan_lenet_mnist.py`; only the head's input/hidden dimensions are
-  parameterized to fit the 64-d digits input. Swap in MNIST locally if you
-  want the exact same dataset as the main experiment.
-- Results (plots, CSVs, model checkpoints) are not tracked in git — see
-  `.gitignore`. Save any results you want to keep in `results/`.
-
-## License
-
-MIT — see `LICENSE`.
